@@ -1,23 +1,13 @@
-# Databricks notebook source
-import sklearn
-import pandas as pd
-from sklearn.datasets import load_iris
-from pandas.plotting import scatter_matrix
 import matplotlib.pyplot as plt
-import seaborn as sns
 import random
 import matplotlib.pyplot as plt
 from numpy import array, average
 
-# COMMAND ----------
-
 Initial_amount = 100
 Number_periods = 1000
-Iterations = 10000
+Iterations = 100
 Gain = 0.5
 Loose = -0.4
-
-# COMMAND ----------
 
 def game(x, i):
     j = 0
@@ -33,8 +23,6 @@ def game(x, i):
         time.append(j)
         j += 1
     return time, money, i
-
-
 
 def plotting(Amount, Periods, i):
     j = 0
@@ -66,15 +54,11 @@ def plotting(Amount, Periods, i):
     
         
 
-# COMMAND ----------
-
 plotting(Initial_amount, Number_periods, Iterations)
 
-# COMMAND ----------
 
 print(pow(1.05, Iterations) )
 
-# COMMAND ----------
 
 i = 0
 
@@ -97,19 +81,3 @@ ax.set_ylabel("Money")
 for x in range(Iterations):
     ax.plot(List_time[x], List_money[x])
     ax.plot(List_time[x], column_average, color='purple', linewidth=5)
-    
-
-# COMMAND ----------
-
-plantes_iris = load_iris()
-df_plantes_iris = pd.DataFrame(plantes_iris.data, columns=plantes_iris.feature_names)
-
-# COMMAND ----------
-
-sns.set(style="ticks", color_codes=True)
-df_plantes_iris = sns.load_dataset("iris")
-sns.pairplot(df_plantes_iris, hue="species")
-
-# COMMAND ----------
-
-df_plantes_iris
